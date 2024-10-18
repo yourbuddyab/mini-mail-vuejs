@@ -57,8 +57,8 @@ export default {
                     password: this.password,
                     password_confirmation: this.password_confirmation,
                 }, { 'Content-type': 'application/json', "Access-Control-Allow-Origin": "*" });
-
-                this.$router.push({ name: 'Sign In' });
+                alert('Successfully register your information. Now Login')
+                this.$router.push('/');
                 // eslint-disable-next-line no-unused-vars
             } catch (error) {
                 this.errorMessage = 'Registration failed. Please try again.';

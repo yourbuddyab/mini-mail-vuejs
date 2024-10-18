@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h3 class="text-center">Create Campaign</h3>
+            <div class="d-flex justify-content-between">
+                <h3 class="">Create Campaign</h3>
+                <button @click="downloadCSV" class="btn btn-outline-dark">Sample File Download</button>
+            </div>
             <form @submit.prevent="createCampaign">
                 <div class="mb-3">
                     <label for="campaignName" class="form-label">Campaign Name</label>
@@ -38,6 +41,13 @@ export default {
             this.csv_file = event.target.files[0];
         },
 
+        downloadCSV() {
+            const link = document.createElement('a');
+            link.href = this.$router.resolve({ path: '/assets/csvupload.csv' }).href;
+            link.download = 'sample.csv';
+            link.click();
+        },
+
         async createCampaign() {
             if (!this.campaign_name || !this.csv_file) {
                 alert('Please fill all fields.');
@@ -60,6 +70,7 @@ export default {
                     this.campaign_name = '';
                     this.csv_file = null;
                     alert('Campaign created successfully');
+                    this.$router.push({ name: 'Campaign Index' });
                 } else {
                     alert('Failed to create campaign');
                 }

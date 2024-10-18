@@ -1,7 +1,6 @@
 <template>
     <div class="container mt-5">
         <div class="row">
-            <!-- Left Side: Logo & Description -->
             <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
                 <div class="text-center">
                     <img src="../assets/logo.svg" class="img-fluid mb-4" alt="Logo">
@@ -10,7 +9,6 @@
                 </div>
             </div>
 
-            <!-- Right Side: Sign Up Form -->
             <div class="col-md-6">
                 <div class="card shadow p-4">
                     <SignIn />

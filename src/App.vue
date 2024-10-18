@@ -9,7 +9,8 @@
 
 <script>
 import SidebarComponent from '@/components/Layout/SidebarComponent.vue';
-import { useAuthStore } from './stores/authStore';
+import { useAuthStore } from '@/stores/authStore'; // Fixed import path
+import { computed } from 'vue';
 
 export default {
   name: "DashboardView",
@@ -18,10 +19,17 @@ export default {
   },
   setup() {
     const authStore = useAuthStore();
+
+    // Use a computed property for reactivity
+    const isAuthenticated = computed(() => authStore.isAuthenticated); // Make it reactive
+
     return {
-      isAuthenticated: authStore.isAuthenticated,
+      isAuthenticated,
     };
   },
+  mounted() {
+    console.log(this.isAuthenticated); // Use `mounted` instead of `moounted`
+  }
 };
 </script>
 
