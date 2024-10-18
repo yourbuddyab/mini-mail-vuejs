@@ -12,7 +12,6 @@
                                 <th>Total CSV</th>
                                 <th>Failed to Save</th>
                                 <th>Email Sent</th>
-                                <th>Total Contents</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -23,8 +22,6 @@
                                 <td>{{ campaignProgress[campaign.id]?.totalEmails }}</td>
                                 <td>{{ campaignProgress[campaign.id]?.failedEmails }}</td>
                                 <td>{{ campaignProgress[campaign.id]?.processedEmails }} </td>
-                                <td>{{ campaignProgress[campaign.id]?.sendProcessedEmails }}</td>
-
                                 <td :class="statusClass(campaign.status)">{{ statusText(campaign.status) }}</td>
                                 <td class="text-center">
                                     <button class="btn btn-outline-primary me-2" @click="editCampaign(campaign.id)"
@@ -38,7 +35,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="text-center">
+                    <div class="text-center" v-else>
                         <h1>
                             Campaign Not Found
                         </h1>
