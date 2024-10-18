@@ -28,7 +28,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.isAuthenticated); // Use `mounted` instead of `moounted`
   }
 };
 </script>

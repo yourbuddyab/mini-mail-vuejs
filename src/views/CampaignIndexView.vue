@@ -5,7 +5,7 @@
             <h3 class="text-center">Campaigns</h3>
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" v-if="campaigns.length != 0">
                         <thead>
                             <tr>
                                 <th>Campaign Name</th>
@@ -38,6 +38,12 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="text-center">
+                        <h1>
+                            Campaign Not Found
+                        </h1>
+                        <RouterLink to="/campaign/create">Create New Compaign</RouterLink>
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,10 +104,10 @@ export default {
                 });
                 const progressData = response.data.data;
                 // Update the campaign progress
-                this.campaignProgress[campaignId].processedEmails = progressData.save?.proccesd;
-                this.campaignProgress[campaignId].failedEmails = progressData.save?.failed;
-                this.campaignProgress[campaignId].sendProcessedEmails = progressData.email?.proccesd;
-                this.campaignProgress[campaignId].totalEmails = progressData.email?.total;
+                this.campaignProgress[campaignId].processedEmails = progressData.save ? progressData.save?.proccesd : 0;
+                this.campaignProgress[campaignId].failedEmails = progressData.save ? progressData.save?.failed : 0;
+                this.campaignProgress[campaignId].sendProcessedEmails = progressData.email ? progressData.email?.proccesd : 0;
+                this.campaignProgress[campaignId].totalEmails = progressData.email ? progressData.email?.total : 0;
             } catch (error) {
                 console.error(`Failed to fetch progress for campaign ${campaignId}:`, error);
             }
